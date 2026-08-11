@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phishing em Massa — Maratona Tech 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --navy-0: #08161F;
+      --navy-1: #0D2130;
+      --navy-2: #12293B;
+      --navy-3: #1A3A50;
+      --line: #274A63;
+      --foam: #EEF3EE;
+      --foam-dim: #9FB3BE;
+      --hook: #E8A93B;
+      --hook-dim: #8A6A2F;
+      --danger: #E15B4F;
+      --danger-bg: #3A1F1C;
+      --safe: #3FB88A;
+      --safe-bg: #123328;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--navy-0);
+      color: var(--foam);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--hook);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 1px;
+      background: var(--hook);
+      display: inline-block;
+    }
+
+    .wrap {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    a {
+      color: var(--hook);
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(8, 22, 31, 0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      max-width: 1040px;
+    }
+
+    .brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.01em;
+    }
+
+    .brand span {
+      color: var(--hook);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 22px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: var(--foam-dim);
+      text-decoration: none;
+      font-size: 13.5px;
+      transition: color .2s;
+    }
+
+    nav a:hover {
+      color: var(--foam);
+    }
+
+    @media (max-width:640px) {
+      nav ul {
+        display: none;
+      }
+    }
+
+    /* HERO */
+    .hero {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 88px 24px 60px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    @media (max-width:800px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 5.4vw, 54px);
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--hook);
+    }
+
+    .hero p.lede {
+      color: var(--foam-dim);
+      font-size: 17px;
+      max-width: 46ch;
+      margin-top: 18px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 28px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      border-left: 2px solid var(--hook);
+      padding-left: 12px;
+    }
+
+    .stat b {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 26px;
+    }
+
+    .stat span {
+      font-size: 12.5px;
+      color: var(--foam-dim);
+    }
+
+    .net-box {
+      background: var(--navy-1);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 70px 24px;
+    }
+
+    section+section {
+      border-top: 1px solid var(--line);
+    }
+
+    .q-num {
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--hook-dim);
+      font-size: 13px;
+    }
+
+    h2.title {
+      font-size: clamp(24px, 3.4vw, 32px);
+      margin-top: 6px;
+      max-width: 22ch;
+    }
+
+    .lead-text {
+      color: var(--foam-dim);
+      font-size: 16px;
+      max-width: 65ch;
+      margin-top: 14px;
+    }
+
+    /* PROBLEMA */
+    .net-visual {
+      margin-top: 36px;
+    }
+
+    .net-visual svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .callout {
+      margin-top: 30px;
+      background: var(--navy-2);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--hook);
+      border-radius: 10px;
+      padding: 18px 22px;
+      font-size: 15px;
+      color: var(--foam);
+    }
+
+    .callout b {
+      color: var(--hook);
+    }
+
+    /* FLOWCHART */
+    .flow {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .flow-step {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 18px;
+      position: relative;
+      padding-bottom: 34px;
+    }
+
+    .flow-step:last-child {
+      padding-bottom: 0;
+    }
+
+    .flow-step::before {
+      content: "";
+      position: absolute;
+      left: 25px;
+      top: 52px;
+      bottom: 0;
+      width: 1px;
+      background: repeating-linear-gradient(to bottom, var(--line) 0 5px, transparent 5px 10px);
+    }
+
+    .flow-step:last-child::before {
+      display: none;
+    }
+
+    .flow-num {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--navy-2);
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      color: var(--hook);
+      flex-shrink: 0;
+    }
+
+    .flow-body h3 {
+      font-size: 16.5px;
+      margin-bottom: 6px;
+    }
+
+    .flow-body p {
+      margin: 0;
+      color: var(--foam-dim);
+      font-size: 14.5px;
+    }
+
+    .flow-tag {
+      display: inline-block;
+      margin-top: 8px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--hook);
+      border: 1px solid var(--hook-dim);
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+
+    /* RISCOS */
+    .risk-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    @media (max-width:640px) {
+      .risk-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .risk-card {
+      background: var(--navy-2);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .risk-card h3 {
+      font-size: 15.5px;
+      margin-bottom: 8px;
+      color: var(--foam);
+    }
+
+    .risk-card p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--foam-dim);
+    }
+
+    .risk-card .tag {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10.5px;
+      color: var(--danger);
+      background: var(--danger-bg);
+      padding: 3px 8px;
+      border-radius: 5px;
+      letter-spacing: 0.04em;
+    }
+
+    /* EVITAR */
+    .tips {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .tip {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: var(--navy-2);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px 18px;
+      position: relative;
+    }
+
+    .tip::after {
+      content: "";
+      position: absolute;
+      left: 26px;
+      bottom: -7px;
+      width: 14px;
+      height: 14px;
+      background: var(--navy-2);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      transform: rotate(45deg);
+    }
+
+    .tip:last-child::after {
+      display: none;
+    }
+
+    .tip .check {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--safe-bg);
+      color: var(--safe);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 1px;
+    }
+
+    .tip p {
+      margin: 0;
+      font-size: 14.5px;
+    }
+
+    .tip b {
+      color: var(--foam);
+    }
+
+    /* QUIZ */
+    .quiz-section {
+      background: var(--navy-1);
+      border-top: 1px solid var(--line);
+    }
+
+    .quiz-box {
+      background: var(--navy-2);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 32px;
+      margin-top: 34px;
+    }
+
+    @media (max-width:640px) {
+      .quiz-box {
+        padding: 22px;
+      }
+    }
+
+    .quiz-progress {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 26px;
+    }
+
+    .quiz-progress span {
+      flex: 1;
+      height: 4px;
+      border-radius: 2px;
+      background: var(--navy-3);
+      transition: background .3s;
+    }
+
+    .quiz-progress span.done {
+      background: var(--hook);
+    }
+
+    .quiz-progress span.current {
+      background: var(--foam-dim);
+    }
+
+    .qtext {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 20px;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .opt {
+      text-align: left;
+      background: var(--navy-1);
+      border: 1px solid var(--line);
+      color: var(--foam);
+      padding: 14px 16px;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14.5px;
+      cursor: pointer;
+      transition: border-color .15s, background .15s;
+    }
+
+    .opt:hover {
+      border-color: var(--hook-dim);
+    }
+
+    .opt.correct {
+      border-color: var(--safe);
+      background: var(--safe-bg);
+    }
+
+    .opt.wrong {
+      border-color: var(--danger);
+      background: var(--danger-bg);
+    }
+
+    .opt:disabled {
+      cursor: default;
+    }
+
+    .feedback {
+      margin-top: 16px;
+      font-size: 14px;
+      color: var(--foam-dim);
+      display: none;
+    }
+
+    .feedback.show {
+      display: block;
+    }
+
+    .feedback b {
+      color: var(--foam);
+    }
+
+    .quiz-nav {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 22px;
+    }
+
+    .btn {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--hook);
+      color: #241A05;
+      border: none;
+      padding: 11px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: none;
+    }
+
+    .btn.show {
+      display: inline-block;
+    }
+
+    .btn:hover {
+      filter: brightness(1.08);
+    }
+
+    .result {
+      display: none;
+      text-align: center;
+    }
+
+    .result.show {
+      display: block;
+    }
+
+    .result .score {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 46px;
+      color: var(--hook);
+    }
+
+    .result p {
+      color: var(--foam-dim);
+      max-width: 44ch;
+      margin: 10px auto 0;
+    }
+
+    .btn-outline {
+      margin-top: 20px;
+      background: transparent;
+      color: var(--foam);
+      border: 1px solid var(--line);
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13.5px;
+    }
+
+    /* FOOTER */
+    footer {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 50px 24px 70px;
+      border-top: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--foam-dim);
+    }
+
+    .team {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .team span {
+      background: var(--navy-2);
+      border: 1px solid var(--line);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12.5px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="wrap">
+      <div class="brand">Maratona Tech <span>2026</span></div>
+      <ul>
+        <li><a href="#problema">O problema</a></li>
+        <li><a href="#acontece">Como acontece</a></li>
+        <li><a href="#riscos">Riscos</a></li>
+        <li><a href="#evitar">Como evitar</a></li>
+        <li><a href="#quiz">Quiz</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Dilemas digitais — Fase 1</div>
+        <h1>Phishing em massa: a <em>pesca</em> no oceano digital</h1>
+        <p class="lede">Uma rede lançada no oceano, sem se importar com qual peixe vai cair. É assim que funciona o
+          phishing por e-mail — e é por isso que ele continua funcionando.</p>
+        <div class="hero-stats">
+          <div class="stat"><b>1 em 1000</b><span>cliques já bastam para o golpe dar lucro</span></div>
+          <div class="stat"><b>Milhões</b><span>de mensagens disparadas por golpe</span></div>
+        </div>
+      </div>
+      <div class="net-box">
+        <svg viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#274A63" stroke-width="1" fill="none">
+            <path d="M10 20 L250 20 L230 200 L30 200 Z" />
+            <line x1="10" y1="20" x2="30" y2="200" />
+            <line x1="55" y1="20" x2="65" y2="200" />
+            <line x1="100" y1="20" x2="100" y2="200" />
+            <line x1="145" y1="20" x2="145" y2="200" />
+            <line x1="190" y1="20" x2="180" y2="200" />
+            <line x1="230" y1="20" x2="215" y2="200" />
+            <line x1="10" y1="55" x2="235" y2="50" />
+            <line x1="8" y1="95" x2="238" y2="90" />
+            <line x1="15" y1="135" x2="232" y2="132" />
+            <line x1="20" y1="170" x2="225" y2="168" />
+          </g>
+          <g>
+            <rect x="100" y="68" width="34" height="24" rx="3" fill="#E8A93B" />
+            <path d="M100 68 L117 82 L134 68" stroke="#241A05" stroke-width="1.5" fill="none" />
+          </g>
+          <text x="130" y="30" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9"
+            fill="#9FB3BE">REDE LANÇADA NO OCEANO DIGITAL</text>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <section id="problema">
+    <div class="q-num">Pergunta 01</div>
+    <h2 class="title">Qual é o problema?</h2>
+    <p class="lead-text">
+      O phishing em massa não mira em uma pessoa específica: ele mira em <b style="color:var(--foam)">volume</b>.
+      O golpista dispara e-mails, SMS (smishing) ou mensagens em redes sociais para listas gigantescas de contatos,
+      usando temas universais — cobranças falsas de banco, entregas pendentes dos Correios, promoções
+      imperdíveis ou avisos de redefinição de senha.
+    </p>
+    <div class="callout">
+      <b>O truque da escala:</b> mesmo que 99% das pessoas percebam o golpe e ignorem, se apenas 0,1% clicar,
+      o criminoso já lucra ou rouba centenas de credenciais de uma só vez. Não é preciso enganar todo mundo —
+      só precisa enganar alguém, entre milhões.
+    </div>
+  </section>
+
+  <section id="acontece">
+    <div class="q-num">Pergunta 02</div>
+    <h2 class="title">Como ele acontece?</h2>
+    <p class="lead-text">O caminho do golpe segue quase sempre a mesma lógica, do disparo em massa até o roubo dos
+      dados.</p>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <div class="flow-body">
+          <h3>Disparo em massa</h3>
+          <p>O golpista envia o mesmo e-mail para milhares (ou milhões) de endereços, comprados ou vazados em bancos de
+            dados.</p>
+          <span class="flow-tag">escala, não precisão</span>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <div class="flow-body">
+          <h3>Isca genérica e urgente</h3>
+          <p>O assunto cria pressão: "sua conta será bloqueada", "encomenda retida", "pagamento pendente". A urgência
+            impede que a vítima pare para pensar.</p>
+          <span class="flow-tag">gatilho emocional</span>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <div class="flow-body">
+          <h3>Link ou anexo falso</h3>
+          <p>O e-mail leva a um site clonado (que imita banco, loja ou rede social) ou a um arquivo com vírus
+            disfarçado.</p>
+          <span class="flow-tag">página clonada</span>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">4</div>
+        <div class="flow-body">
+          <h3>A vítima digita seus dados</h3>
+          <p>Achando que está no site real, a pessoa insere login, senha ou dados de cartão — que vão direto para o
+            golpista.</p>
+          <span class="flow-tag">roubo de credenciais</span>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">5</div>
+        <div class="flow-body">
+          <h3>Uso ou venda dos dados</h3>
+          <p>Com os dados em mãos, o criminoso invade contas, faz compras ou vende as informações a outros golpistas.
+          </p>
+          <span class="flow-tag">lucro do golpe</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="riscos">
+    <div class="q-num">Pergunta 03</div>
+    <h2 class="title">Quais são os riscos?</h2>
+    <p class="lead-text">Quem cai no golpe — e quem sofre as consequências dele — nem sempre é a mesma pessoa.</p>
+
+    <div class="risk-grid">
+      <div class="risk-card">
+        <span class="tag">pessoa física</span>
+        <h3>Perda financeira direta</h3>
+        <p>Dinheiro roubado da conta, compras não autorizadas no cartão e dívidas contraídas em nome da vítima.</p>
+      </div>
+      <div class="risk-card">
+        <span class="tag">identidade</span>
+        <h3>Roubo de identidade</h3>
+        <p>Dados usados para abrir contas, pedir empréstimos ou cometer crimes em nome de outra pessoa.</p>
+      </div>
+      <div class="risk-card">
+        <span class="tag">contatos</span>
+        <h3>Efeito em cadeia</h3>
+        <p>Uma conta de e-mail ou rede social invadida vira ferramenta para enganar familiares e amigos da vítima.</p>
+      </div>
+      <div class="risk-card">
+        <span class="tag">grupos vulneráveis</span>
+        <h3>Idosos e menos familiarizados</h3>
+        <p>Pessoas com menos intimidade com tecnologia têm mais dificuldade de identificar sites e e-mails falsos.</p>
+      </div>
+      <div class="risk-card">
+        <span class="tag">empresas</span>
+        <h3>Vazamento corporativo</h3>
+        <p>Um único funcionário enganado pode abrir a porta para o roubo de dados de toda uma empresa.</p>
+      </div>
+      <div class="risk-card">
+        <span class="tag">emocional</span>
+        <h3>Abalo psicológico</h3>
+        <p>Vergonha, culpa e perda de confiança na própria capacidade de usar a internet com segurança.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="evitar">
+    <div class="q-num">Pergunta 04</div>
+    <h2 class="title">Como evitar?</h2>
+    <p class="lead-text">Antes de clicar em qualquer link, vale parar 5 segundos e checar estes pontos:</p>
+
+    <div class="tips">
+      <div class="tip">
+        <div class="check">1</div>
+        <p><b>Confira o remetente de verdade.</b> "Banco X" pode esconder um endereço estranho como
+          contato@promo-bank123.ru — passe o mouse antes de confiar no nome.</p>
+      </div>
+      <div class="tip">
+        <div class="check">2</div>
+        <p><b>Desconfie da urgência.</b> "Sua conta será bloqueada em 24h" é um clássico gatilho de pressão para você
+          não pensar direito.</p>
+      </div>
+      <div class="tip">
+        <div class="check">3</div>
+        <p><b>Nunca clique direto no link do e-mail.</b> Abra o site oficial digitando o endereço você mesmo, ou use o
+          aplicativo oficial.</p>
+      </div>
+      <div class="tip">
+        <div class="check">4</div>
+        <p><b>Olhe o endereço do site com atenção.</b> Letras trocadas, hífens extras ou domínios estranhos (.xyz, .top)
+          são sinais de página clonada.</p>
+      </div>
+      <div class="tip">
+        <div class="check">5</div>
+        <p><b>Ative a verificação em duas etapas.</b> Mesmo que a senha vaze, o golpista ainda precisa do segundo código
+          para entrar.</p>
+      </div>
+      <div class="tip">
+        <div class="check">6</div>
+        <p><b>Nenhuma empresa séria pede senha por e-mail.</b> Bancos e redes sociais nunca solicitam login completo por
+          mensagem.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="quiz" class="quiz-section">
+    <div class="q-num">Teste seus conhecimentos</div>
+    <h2 class="title">Quiz: você cairia num phishing?</h2>
+    <p class="lead-text">6 perguntas rápidas para ver se você reconhece as iscas antes de morder.</p>
+
+    <div class="quiz-box">
+      <div class="quiz-progress" id="progress"></div>
+
+      <div id="quiz-live">
+        <div class="qtext" id="qtext"></div>
+        <div class="options" id="options"></div>
+        <div class="feedback" id="feedback"></div>
+      </div>
+
+      <div class="result" id="result">
+        <div class="score" id="score"></div>
+        <p id="resultMsg"></p>
+        <button class="btn-outline" onclick="restartQuiz()">Refazer o quiz</button>
+      </div>
+
+      <div class="quiz-nav">
+        <button class="btn" id="nextBtn" onclick="nextQuestion()">Próxima pergunta</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="eyebrow" style="margin-bottom:6px;">Maratona Tech 2026 — Fase 1: Dilemas Digitais</div>
+    <p>Tema escolhido: Phishing por E-mail · Protótipo digital em formato de site</p>
+    <div class="team">
+      <span>Andriellyn</span><span>Gabriel</span><span>Giovana</span><span>Ruan</span>
+    </div>
+  </footer>
+
+  <script>
+    const questions = [
+      {
+        q: "Você recebe um e-mail do \"seu banco\" avisando que sua conta será bloqueada em 2 horas. O que fazer primeiro?",
+        options: [
+          "Clicar no link do e-mail rapidamente antes que expire",
+          "Abrir o app oficial do banco ou digitar o site de cor para checar",
+          "Responder o e-mail pedindo mais detalhes"
+        ],
+        correct: 1,
+        explain: "A urgência é a principal arma do golpista. O caminho seguro é sempre ir direto ao app ou site oficial, nunca pelo link recebido."
+      },
+      {
+        q: "Qual desses é o maior sinal de alerta em um e-mail?",
+        options: [
+          "O logotipo da empresa está bonito e colorido",
+          "O endereço do remetente não bate com o domínio oficial da empresa",
+          "O e-mail chegou de manhã"
+        ],
+        correct: 1,
+        explain: "Um logotipo bonito é fácil de copiar. O endereço real do remetente é muito mais difícil de falsificar de forma perfeita."
+      },
+      {
+        q: "Por que o phishing em massa funciona mesmo enganando pouquíssimas pessoas?",
+        options: [
+          "Porque o golpista manda para poucas pessoas escolhidas a dedo",
+          "Porque basta uma fração mínima clicar, entre milhões de mensagens, para dar lucro",
+          "Porque todo mundo sempre cai no golpe"
+        ],
+        correct: 1,
+        explain: "É a lógica da rede no oceano: 0,1% de milhões de mensagens ainda é um número enorme de vítimas."
+      },
+      {
+        q: "Qual prática realmente reduz o risco mesmo se sua senha vazar?",
+        options: [
+          "Usar a mesma senha em todos os sites para não esquecer",
+          "Ativar a verificação em duas etapas",
+          "Guardar a senha anotada no post-it do monitor"
+        ],
+        correct: 1,
+        explain: "A verificação em duas etapas exige um segundo código, então mesmo com a senha vazada o golpista não consegue entrar sozinho."
+      },
+      {
+        q: "Uma empresa séria pede sua senha completa por e-mail para \"confirmar sua identidade\". Isso é normal?",
+        options: [
+          "Sim, é um procedimento comum de segurança",
+          "Não, nenhuma empresa séria pede senha por e-mail",
+          "Depende de quantas letras a senha tem"
+        ],
+        correct: 1,
+        explain: "Pedir senha por e-mail é, na prática, sempre um sinal de golpe — bancos e serviços sérios não fazem isso."
+      },
+      {
+        q: "Você recebeu um e-mail estranho de \"entrega dos Correios\" com um link. Qual a atitude mais segura?",
+        options: [
+          "Passar o mouse sobre o link para ver o endereço real antes de clicar",
+          "Clicar assim mesmo, já que é rápido conferir",
+          "Encaminhar o e-mail para vários amigos para eles verem"
+        ],
+        correct: 0,
+        explain: "Verificar o endereço real do link (sem clicar) já revela boa parte dos golpes, por causa de domínios estranhos ou trocados."
+      }
+    ];
+
+    let current = 0;
+    let score = 0;
+    let answered = false;
+
+    function renderProgress() {
+      const p = document.getElementById('progress');
+      p.innerHTML = '';
+      questions.forEach((_, i) => {
+        const s = document.createElement('span');
+        if (i < current) s.className = 'done';
+        else if (i === current) s.className = 'current';
+        p.appendChild(s);
+      });
+    }
+
+    function renderQuestion() {
+      answered = false;
+      const item = questions[current];
+      document.getElementById('qtext').textContent = (current + 1) + '. ' + item.q;
+      const opts = document.getElementById('options');
+      opts.innerHTML = '';
+      item.options.forEach((opt, i) => {
+        const b = document.createElement('button');
+        b.className = 'opt';
+        b.textContent = opt;
+        b.onclick = () => selectAnswer(i);
+        opts.appendChild(b);
+      });
+      document.getElementById('feedback').className = 'feedback';
+      document.getElementById('feedback').textContent = '';
+      document.getElementById('nextBtn').className = 'btn';
+      renderProgress();
+    }
+
+    function selectAnswer(i) {
+      if (answered) return;
+      answered = true;
+      const item = questions[current];
+      const buttons = document.querySelectorAll('.opt');
+      buttons.forEach((b, idx) => {
+        b.disabled = true;
+        if (idx === item.correct) b.classList.add('correct');
+        else if (idx === i) b.classList.add('wrong');
+      });
+      if (i === item.correct) score++;
+      const fb = document.getElementById('feedback');
+      fb.innerHTML = (i === item.correct ? '<b>Certo. </b>' : '<b>Quase. </b>') + item.explain;
+      fb.className = 'feedback show';
+      document.getElementById('nextBtn').className = 'btn show';
+      document.getElementById('nextBtn').textContent = current === questions.length - 1 ? 'Ver resultado' : 'Próxima pergunta';
+    }
+
+    function nextQuestion() {
+      current++;
+      if (current >= questions.length) {
+        showResult();
+      } else {
+        renderQuestion();
+      }
+    }
+
+    function showResult() {
+      document.getElementById('quiz-live').style.display = 'none';
+      document.getElementById('nextBtn').className = 'btn';
+      document.getElementById('nextBtn').style.display = 'none';
+      const result = document.getElementById('result');
+      result.className = 'result show';
+      document.getElementById('score').textContent = score + ' / ' + questions.length;
+      let msg = '';
+      if (score === questions.length) msg = 'Rede furada. Você identificou todas as iscas — continue assim ao checar remetentes e links.';
+      else if (score >= questions.length - 2) msg = 'Bom olho. Você pegou a maioria das iscas, só fique atento aos detalhes que ainda passaram.';
+      else msg = 'Vale reforçar o hábito de checar remetente, link e urgência antes de clicar em qualquer coisa.';
+      document.getElementById('resultMsg').textContent = msg;
+      renderProgress();
+    }
+
+    function restartQuiz() {
+      current = 0;
+      score = 0;
+      document.getElementById('quiz-live').style.display = 'block';
+      document.getElementById('nextBtn').style.display = 'inline-block';
+      document.getElementById('result').className = 'result';
+      renderQuestion();
+    }
+
+    renderQuestion();
+  </script>
+
+</body>
+
+</html>
