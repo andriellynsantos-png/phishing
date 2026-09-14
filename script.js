@@ -1,71 +1,101 @@
 const questions = [
   {
-    q: "Você recebe um e-mail do \"seu banco\" avisando que sua conta será bloqueada em 2 horas. O que fazer primeiro?",
+    q: "Você recebe um e-mail de \"suporte@nubank-seguro.com\" avisando um problema na sua conta. O que torna esse endereço suspeito?",
     options: [
-      "Clicar no link do e-mail rapidamente antes que expire",
-      "Abrir o app oficial do banco ou digitar o site de cor para checar",
-      "Responder o e-mail pedindo mais detalhes"
+      "Ele usa a palavra \"seguro\", o que é raro em e-mails de banco",
+      "\"nubank-seguro.com\" não é o domínio oficial do Nubank, mesmo citando o nome do banco",
+      "E-mails de suporte nunca devem ter a palavra \"suporte\" no início"
     ],
     correct: 1,
-    explain: "A urgência é a principal arma do golpista. O caminho seguro é sempre ir direto ao app ou site oficial, nunca pelo link recebido."
+    explain: "O nome do banco aparecendo no endereço não garante nada — o que importa é o domínio depois do @, e \"nubank-seguro.com\" não pertence à empresa real."
   },
   {
-    q: "Qual desses é o maior sinal de alerta em um e-mail?",
+    q: "Um site pede seu login e mostra o símbolo de cadeado (conexão segura/HTTPS) na barra de endereço. Isso significa que o site é confiável?",
     options: [
-      "O logotipo da empresa está bonito e colorido",
-      "O endereço do remetente não bate com o domínio oficial da empresa",
-      "O e-mail chegou de manhã"
+      "Sim, o cadeado garante que o site é legítimo e pode ser usado sem receio",
+      "Não necessariamente — o cadeado só indica que a conexão é criptografada, mesmo sites falsos podem ter esse símbolo",
+      "Só é confiável se o cadeado for verde, não cinza"
     ],
     correct: 1,
-    explain: "Um logotipo bonito é fácil de copiar. O endereço real do remetente é muito mais difícil de falsificar de forma perfeita."
+    explain: "O cadeado mostra apenas que os dados trafegam de forma criptografada entre você e o site — não que o site seja verdadeiro. Golpistas também conseguem esse selo em páginas clonadas."
   },
   {
-    q: "Por que o phishing em massa funciona mesmo enganando pouquíssimas pessoas?",
+    q: "Duas mensagens chegam no mesmo dia: uma diz \"sua fatura vence hoje, pague agora\" e outra diz \"detectamos login incomum, clique para revisar em até 30 minutos\". O que as duas têm em comum como estratégia de golpe?",
     options: [
-      "Porque o golpista manda para poucas pessoas escolhidas a dedo",
-      "Porque basta uma fração mínima clicar, entre milhões de mensagens, para dar lucro",
-      "Porque todo mundo sempre cai no golpe"
+      "Ambas oferecem tempo suficiente para você pensar com calma",
+      "Ambas usam prazo curto para impedir que você pare e analise antes de agir",
+      "Ambas pedem apenas seu nome completo, nada além disso"
     ],
     correct: 1,
-    explain: "É a lógica da rede no oceano: 0,1% de milhões de mensagens ainda é um número enorme de vítimas."
+    explain: "Prazos curtos e sensação de urgência são a ferramenta mais comum do phishing: quanto menos tempo você sente que tem, menos você para para verificar se é golpe."
   },
   {
-    q: "Qual prática realmente reduz o risco mesmo se sua senha vazar?",
+    q: "Você ativou a verificação em duas etapas. Um golpista descobre sua senha através de um site falso. Isso significa que ele já consegue entrar na sua conta?",
     options: [
-      "Usar a mesma senha em todos os sites para não esquecer",
-      "Ativar a verificação em duas etapas",
-      "Guardar a senha anotada no post-it do monitor"
+      "Sim, a senha sozinha já é suficiente para qualquer conta",
+      "Não necessariamente — ele ainda precisaria do segundo código, que normalmente só você recebe",
+      "Só consegue entrar se souber também sua data de nascimento"
     ],
     correct: 1,
-    explain: "A verificação em duas etapas exige um segundo código, então mesmo com a senha vazada o golpista não consegue entrar sozinho."
+    explain: "A verificação em duas etapas foi criada exatamente para isso: mesmo com a senha vazada, falta o segundo fator (código, aplicativo ou token) que o golpista não tem acesso."
   },
   {
-    q: "Uma empresa séria pede sua senha completa por e-mail para \"confirmar sua identidade\". Isso é normal?",
+    q: "Uma mensagem de \"RH da empresa\" pede que você clique em um link para \"atualizar seus dados no sistema de folha de pagamento\" ainda hoje. Qual detalhe pesa mais para decidir se é golpe?",
     options: [
-      "Sim, é um procedimento comum de segurança",
-      "Não, nenhuma empresa séria pede senha por e-mail",
-      "Depende de quantas letras a senha tem"
+      "Se o e-mail foi escrito em português correto, sem erros de gramática",
+      "Se o link leva realmente ao domínio interno da empresa, e não a um endereço externo parecido",
+      "Se a mensagem tem a logomarca oficial da empresa no topo"
     ],
     correct: 1,
-    explain: "Pedir senha por e-mail é, na prática, sempre um sinal de golpe — bancos e serviços sérios não fazem isso."
+    explain: "Gramática correta e logomarca são fáceis de copiar. O que realmente importa é para onde o link leva de verdade — o endereço final do site."
   },
   {
-    q: "Você recebeu um e-mail estranho de \"entrega dos Correios\" com um link. Qual a atitude mais segura?",
+    q: "Por que o phishing em massa continua compensando para o criminoso, mesmo quando quase todo mundo identifica o golpe e ignora a mensagem?",
     options: [
-      "Passar o mouse sobre o link para ver o endereço real antes de clicar",
-      "Clicar assim mesmo, já que é rápido conferir",
-      "Encaminhar o e-mail para vários amigos para eles verem"
+      "Porque o golpista foca em enganar sempre a mesma pessoa várias vezes",
+      "Porque o volume de mensagens é tão grande que até uma fração mínima de vítimas já gera lucro",
+      "Porque provedores de e-mail nunca bloqueiam esse tipo de mensagem"
     ],
-    correct: 0,
-    explain: "Verificar o endereço real do link (sem clicar) já revela boa parte dos golpes, por causa de domínios estranhos ou trocados."
+    correct: 1,
+    explain: "A lógica é de escala: disparando para milhões de endereços, mesmo uma taxa de sucesso de menos de 1% já significa centenas ou milhares de vítimas."
+  },
+  {
+    q: "Você recebe dois e-mails de cobrança parecidos. Um vem de \"cobranca@correios.com.br\" e outro de \"cobranca@correios-brasil.net\". Qual costuma ser o sinal mais confiável de que um deles é falso?",
+    options: [
+      "O tom mais formal do texto",
+      "O domínio depois do @ — \"correios.com.br\" é o oficial, um domínio parecido mas diferente é sinal de alerta",
+      "A hora em que a mensagem foi enviada"
+    ],
+    correct: 1,
+    explain: "Domínios parecidos com o real, mas com pequenas variações (hífen, extensão diferente, palavra extra), são uma das táticas mais usadas para simular confiança."
+  },
+  {
+    q: "Um colega de trabalho, aparentemente, te envia uma mensagem pedindo urgência para você comprar cartões-presente e mandar os códigos por e-mail, dizendo que está \"em reunião e não pode ligar\". O que essa situação tem de mais suspeito?",
+    options: [
+      "Pedir algo por e-mail em vez de pessoalmente já é sempre golpe",
+      "A combinação de urgência, pedido incomum e impossibilidade de confirmar por voz é um padrão clássico de golpe, mesmo vindo de um contato conhecido",
+      "Cartões-presente são um método de pagamento inseguro para qualquer compra"
+    ],
+    correct: 1,
+    explain: "Contas de colegas ou chefes também podem ser clonadas ou invadidas. A combinação de urgência + pedido fora do comum + impossibilidade de confirmar é o padrão de alerta, não o canal em si."
   }
 ];
 
 let current = 0;
 let score = 0;
 let answered = false;
+let shuffledOptions = [];   // array de {text, isCorrect} já embaralhado da pergunta atual
 
-function renderProgress() {
+function shuffle(array){
+  const arr = array.slice();
+  for (let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function renderProgress(){
   const p = document.getElementById('progress');
   p.innerHTML = '';
   questions.forEach((_, i) => {
@@ -76,16 +106,21 @@ function renderProgress() {
   });
 }
 
-function renderQuestion() {
+function renderQuestion(){
   answered = false;
   const item = questions[current];
-  document.getElementById('qtext').textContent = (current + 1) + '. ' + item.q;
+  document.getElementById('qtext').textContent = (current+1) + '. ' + item.q;
+
+  // monta a lista {text, isCorrect} e embaralha a posição das alternativas
+  const raw = item.options.map((text, i) => ({ text, isCorrect: i === item.correct }));
+  shuffledOptions = shuffle(raw);
+
   const opts = document.getElementById('options');
   opts.innerHTML = '';
-  item.options.forEach((opt, i) => {
+  shuffledOptions.forEach((opt, i) => {
     const b = document.createElement('button');
     b.className = 'opt';
-    b.textContent = opt;
+    b.textContent = opt.text;
     b.onclick = () => selectAnswer(i);
     opts.appendChild(b);
   });
@@ -95,34 +130,34 @@ function renderQuestion() {
   renderProgress();
 }
 
-function selectAnswer(i) {
+function selectAnswer(i){
   if (answered) return;
   answered = true;
   const item = questions[current];
   const buttons = document.querySelectorAll('.opt');
   buttons.forEach((b, idx) => {
     b.disabled = true;
-    if (idx === item.correct) b.classList.add('correct');
+    if (shuffledOptions[idx].isCorrect) b.classList.add('correct');
     else if (idx === i) b.classList.add('wrong');
   });
-  if (i === item.correct) score++;
+  if (shuffledOptions[i].isCorrect) score++;
   const fb = document.getElementById('feedback');
-  fb.innerHTML = (i === item.correct ? '<b>Certo. </b>' : '<b>Quase. </b>') + item.explain;
+  fb.innerHTML = (shuffledOptions[i].isCorrect ? '<b>Certo. </b>' : '<b>Quase. </b>') + item.explain;
   fb.className = 'feedback show';
   document.getElementById('nextBtn').className = 'btn show';
   document.getElementById('nextBtn').textContent = current === questions.length - 1 ? 'Ver resultado' : 'Próxima pergunta';
 }
 
-function nextQuestion() {
+function nextQuestion(){
   current++;
-  if (current >= questions.length) {
+  if (current >= questions.length){
     showResult();
   } else {
     renderQuestion();
   }
 }
 
-function showResult() {
+function showResult(){
   document.getElementById('quiz-live').style.display = 'none';
   document.getElementById('nextBtn').className = 'btn';
   document.getElementById('nextBtn').style.display = 'none';
@@ -137,7 +172,7 @@ function showResult() {
   renderProgress();
 }
 
-function restartQuiz() {
+function restartQuiz(){
   current = 0;
   score = 0;
   document.getElementById('quiz-live').style.display = 'block';
