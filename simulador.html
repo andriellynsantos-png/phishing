@@ -32,7 +32,6 @@
   }
   h1,h2,h3{font-family:'Space Grotesk',sans-serif;margin:0;}
 
-  /* AVISO FIXO DE SIMULAÇÃO — sempre visível, não pode ser fechado */
   .sim-banner{
     position:sticky;top:0;z-index:100;
     background:var(--warn-bg);
@@ -52,7 +51,6 @@
     padding:36px 20px 60px;
   }
 
-  /* TELA 1: página falsa fictícia */
   .fake-app{
     background:var(--navy-2);
     border:1px solid var(--line);
@@ -117,7 +115,6 @@
     text-align:center;margin-top:16px;font-size:12px;color:var(--foam-dim);
   }
 
-  /* TELA 2: processando */
   .loading-screen{
     display:none;
     text-align:center;
@@ -134,7 +131,6 @@
   @keyframes spin{to{transform:rotate(360deg);}}
   .loading-screen p{color:var(--foam-dim);font-size:14px;}
 
-  /* TELA 3: feed de notificações do golpe */
   .feed-screen{display:none;}
   .feed-screen.show{display:block;}
   .feed-header{
@@ -197,13 +193,8 @@
 </head>
 <body>
 
-<div class="sim-banner">
-   <b>ISTO É UMA SIMULAÇÃO.</b> 
-</div>
-
 <div class="stage">
 
-  <!-- TELA 1: formulário fictício -->
   <div class="fake-app" id="screen-form">
     <div class="fake-app-header">
       <div class="fake-logo">Banco<span>Bau</span></div>
@@ -225,13 +216,11 @@
     </div>
   </div>
 
-  <!-- TELA 2: processando -->
   <div class="loading-screen" id="screen-loading">
     <div class="spinner"></div>
     <p>Validando dados...</p>
   </div>
 
-  <!-- TELA 3: feed de golpe acontecendo -->
   <div class="feed-screen" id="screen-feed">
     <div class="feed-header">
       <h2>É assim que o golpe age de verdade</h2>
