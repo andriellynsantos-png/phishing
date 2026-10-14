@@ -7,17 +7,17 @@ const questions = [
       "E-mails de suporte nunca devem ter a palavra \"suporte\" no início"
     ],
     correct: 1,
-    explain: "O nome do banco aparecendo no endereço não garante nada — o que importa é o domínio depois do @, e \"nubank-seguro.com\" não pertence à empresa real."
+    explain: "O nome do banco aparecendo no endereço não garante nada, o que importa é o domínio depois do @, e \"nubank-seguro.com\" não pertence à empresa real."
   },
   {
     q: "Um site pede seu login e mostra o símbolo de cadeado (conexão segura/HTTPS) na barra de endereço. Isso significa que o site é confiável?",
     options: [
       "Sim, o cadeado garante que o site é legítimo e pode ser usado sem receio",
-      "Não necessariamente — o cadeado só indica que a conexão é criptografada, mesmo sites falsos podem ter esse símbolo",
+      "Não necessariamente, o cadeado só indica que a conexão é criptografada, mesmo sites falsos podem ter esse símbolo",
       "Só é confiável se o cadeado for verde, não cinza"
     ],
     correct: 1,
-    explain: "O cadeado mostra apenas que os dados trafegam de forma criptografada entre você e o site — não que o site seja verdadeiro. Golpistas também conseguem esse selo em páginas clonadas."
+    explain: "O cadeado mostra apenas que os dados trafegam de forma criptografada entre você e o site, não que o site seja verdadeiro. Golpistas também conseguem esse selo em páginas clonadas."
   },
   {
     q: "Duas mensagens chegam no mesmo dia: uma diz \"sua fatura vence hoje, pague agora\" e outra diz \"detectamos login incomum, clique para revisar em até 30 minutos\". O que as duas têm em comum como estratégia de golpe?",
@@ -47,7 +47,7 @@ const questions = [
       "Se a mensagem tem a logomarca oficial da empresa no topo"
     ],
     correct: 1,
-    explain: "Gramática correta e logomarca são fáceis de copiar. O que realmente importa é para onde o link leva de verdade — o endereço final do site."
+    explain: "Gramática correta e logomarca são fáceis de copiar. O que realmente importa é para onde o link leva de verdade, o endereço final do site."
   },
   {
     q: "Por que o phishing em massa continua compensando para o criminoso, mesmo quando quase todo mundo identifica o golpe e ignora a mensagem?",
